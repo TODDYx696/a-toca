@@ -68,7 +68,7 @@ window.PRODUCTS = [
   {
     id: 7,
     name: "Misto quente",
-    desc: "Clássico misto quente.",
+    desc: "Presunto e queijo no pão.",
     category: "classicos",
     price: 15.0,
     img: "https://images.unsplash.com/photo-1528736235302-52922df5c122?w=600&h=400&fit=crop&q=80"
@@ -76,7 +76,7 @@ window.PRODUCTS = [
   {
     id: 8,
     name: "X-Burger",
-    desc: "Hambúruer no estilo clássico.",
+    desc: "O X-Burger da casa.",
     category: "classicos",
     price: 18.0,
     img: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop&q=80"
@@ -92,7 +92,7 @@ window.PRODUCTS = [
   {
     id: 10,
     name: "Pão na chapa",
-    desc: "Pão na chapa.",
+    desc: "Pão na chapa, simples e quente.",
     category: "classicos",
     price: 6.0,
     img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop&q=80"
@@ -100,7 +100,7 @@ window.PRODUCTS = [
   {
     id: 11,
     name: "Sanduíche natural",
-    desc: "Sanduíche natural.",
+    desc: "Opção mais leve do cardápio.",
     category: "classicos",
     price: 16.0,
     img: "https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=600&h=400&fit=crop&q=80"

@@ -9,10 +9,10 @@
 
   function escapeHTML(value) {
     return String(value ?? "")
-      .replace(/&/g, "&")
-      .replace(/</g, "<")
-      .replace(/>/g, ">")
-      .replace(/\"/g, """)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
 
@@ -27,7 +27,7 @@
 
   function orderMsg(product) {
     const price = money(product.price);
-    let msg = "Olá! Gostaria de pedir:\n\n*" + product.name + "*";
+    let msg = "Oi! Quero pedir:\n\n*" + product.name + "*";
     if (product.desc) msg += "\n" + product.desc;
     msg += price ? "\n" + price : "\n(consultar valor)";
     return msg + "\n\nA TOCA";
