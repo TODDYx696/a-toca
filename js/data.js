@@ -95,7 +95,7 @@ window.PRODUCTS = [
     desc: "Pão na chapa, simples e quente.",
     category: "classicos",
     price: 6.0,
-    img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop&q=80"
+    img: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&h=400&fit=crop&q=80"
   },
   {
     id: 11,
