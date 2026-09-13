@@ -3,28 +3,16 @@
 
   const STORE = window.STORE || {};
   const WA = `https://wa.me/${STORE.phone || "5514998081793"}`;
-  const PHOTOS = [
-    "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1615297928064-24977384ce0c?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1596662951482-0c1aa5317eae?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&h=400&fit=crop"
-  ];
+  const FALLBACK_PHOTO = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop&q=80";
 
   let activeFilter = "todas";
 
   function escapeHTML(value) {
     return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/\"/g, """)
       .replace(/'/g, "&#039;");
   }
 
@@ -68,13 +56,12 @@
 
     grid.innerHTML = filtered().map((product) => {
       const price = money(product.price);
-      const id = Number(product.id);
-      const photo = PHOTOS[(Number.isFinite(id) && id > 0 ? id - 1 : 0) % PHOTOS.length];
+      const photo = product.img || FALLBACK_PHOTO;
       const tag = product.highlight ? '<span class="menu-tag">Destaque</span>' : "";
 
       return `<article class="menu-card">
         <div class="menu-card-img">${tag}
-          <img src="${photo}" alt="${escapeHTML(product.name)}" width="600" height="400" loading="lazy" decoding="async">
+          <img src="${escapeHTML(photo)}" alt="${escapeHTML(product.name)}" width="600" height="400" loading="lazy" decoding="async">
         </div>
         <div class="menu-card-body">
           <h3 class="menu-card-name">${escapeHTML(product.name)}</h3>
