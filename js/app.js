@@ -3,16 +3,16 @@
 
   const STORE = window.STORE || {};
   const WA = `https://wa.me/${STORE.phone || "5514998081793"}`;
-  const FALLBACK_PHOTO = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop&q=80";
+  const FALLBACK_PHOTO = "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&h=400&fit=crop&q=80";
 
   let activeFilter = "todas";
 
   function escapeHTML(value) {
     return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/\"/g, """)
       .replace(/'/g, "&#039;");
   }
 
@@ -58,13 +58,14 @@
       const price = money(product.price);
       const photo = product.img || FALLBACK_PHOTO;
       const tag = product.highlight ? '<span class="menu-tag">Destaque</span>' : "";
+      const name = escapeHTML(product.name);
 
       return `<article class="menu-card">
         <div class="menu-card-img">${tag}
-          <img src="${escapeHTML(photo)}" alt="${escapeHTML(product.name)}" width="600" height="400" loading="lazy" decoding="async">
+          <img src="${escapeHTML(photo)}" alt="${name}" width="600" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<div class=\'img-fallback\'>${name}</div>');">
         </div>
         <div class="menu-card-body">
-          <h3 class="menu-card-name">${escapeHTML(product.name)}</h3>
+          <h3 class="menu-card-name">${name}</h3>
           <p class="menu-card-desc">${escapeHTML(product.desc)}</p>
           <div class="menu-card-foot">
             <span class="menu-price ${price ? "" : "consult"}">${price || "Consultar"}</span>
